@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:getx_mode/controller/my_controller.dart';
+import 'package:getx_mode/controller/theme_controller.dart';
 import 'package:getx_mode/messages.dart';
 import 'package:getx_mode/page/home.dart';
 
@@ -11,16 +12,14 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  final appdata = GetStorage();
   MyController myController = Get.put(MyController());
+  final controller = Get.put(ModeController());
   @override
   Widget build(BuildContext context) {
-    appdata.writeIfNull('darkmode', true);
     return SimpleBuilder(
         builder: (_) {
-          bool isDarkMode = appdata.read('darkmode');
           return GetMaterialApp(
-            theme: isDarkMode ? ThemeData.dark() : ThemeData.light(),
+            theme: controller.isDark ? ThemeData.dark() : ThemeData.light(),
             debugShowCheckedModeBanner: false,
             translations: Messages(),
             locale: Locale('en', 'US'),

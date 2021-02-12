@@ -8,7 +8,7 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('home'.tr),),
-      drawer: MyStatefulWidget(),
+      drawer: drawer(),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
